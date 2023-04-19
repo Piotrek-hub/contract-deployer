@@ -18,7 +18,7 @@ export default function HomePage() {
 
     const [deployedTokens, setDeployedTokens] = useState<Array<DeployedToken>>([])
 
-    const contract_address: string = "0x6d3563a4e42516a0669F013386dEc54cb16Cd63c"
+    const contract_address: `0x${string}` = "0x6d3563a4e42516a0669F013386dEc54cb16Cd63c"
 
     const {data: signer, isLoading} = useSigner()
     const contract = useContract({
@@ -28,7 +28,7 @@ export default function HomePage() {
     })
 
     useContractEvent({
-        address:  `0x6d3563a4e42516a0669F013386dEc54cb16Cd63c`,
+        address:  contract_address,
         abi: abi,
         eventName: 'Created',
         listener: (token_type, name, symbol, addr) => {
@@ -45,9 +45,11 @@ export default function HomePage() {
 
     const validateSubmit = ():boolean => {
         if(signer == undefined ) {
+            alert("Signer is undefined")
             return false
         }
         if (name?.length == 0 && symbol.length == 0)
+            alert("Please provide name and symbol")
             return false
 
         return true;
@@ -55,13 +57,13 @@ export default function HomePage() {
 
     const deployERC20 = () => {
         if (validateSubmit())
-            contract?.deployERC20(name, symbol).then((value:any, err: any) => console.log(value, err))
+            contract?.deployERC20(name, symbol).then((value:any, err: any) => console.log(value)).catch((err:any) => console.log(err))
 
     }
 
     const deployERC721 = () => {
         if (validateSubmit())
-            contract?.deployERC721(name, symbol).then((value:any, err: any) => console.log(value, err))
+            contract?.deployERC721(name, symbol).then((value:any, err: any) => console.log(value)).catch((err:any) => console.log(err))
     }
 
     return <div className={"mt-[200px] flex max-w-[1280px] items-start justify-center mx-auto gap-[200px]"}>
