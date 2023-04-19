@@ -57,13 +57,13 @@ export default function HomePage() {
 
     const deployERC20 = () => {
         if (validateSubmit())
-            contract?.deployERC20(name, symbol).then((value:any, err: any) => console.log(value)).catch((err:any) => console.log(err))
+            contract?.deployERC20(name, symbol).then((value:any) => console.log(value)).catch((err:any) => console.log(err))
 
     }
 
     const deployERC721 = () => {
         if (validateSubmit())
-            contract?.deployERC721(name, symbol).then((value:any, err: any) => console.log(value)).catch((err:any) => console.log(err))
+            contract?.deployERC721(name, symbol).then((value:any) => console.log(value)).catch((err:any) => console.log(err))
     }
 
     return <div className={"mt-[200px] flex max-w-[1280px] items-start justify-center mx-auto gap-[200px]"}>
