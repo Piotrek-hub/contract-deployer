@@ -4,11 +4,11 @@ import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 
 import {configureChains, createClient, WagmiConfig} from 'wagmi'
-import {  bscTestnet } from 'wagmi/chains'
+import { bscTestnet, fantomTestnet } from 'wagmi/chains'
 
 import HomePage from "../components/HomePage";
 
-const chains = [bscTestnet]
+const chains = [bscTestnet, fantomTestnet]
 const projectId: string = '77690b7f1ebcea841c98780513dce7a0'
 
 const { provider } = configureChains(chains, [w3mProvider({ projectId })])

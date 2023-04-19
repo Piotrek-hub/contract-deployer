@@ -20,6 +20,9 @@ export default function HomePage() {
 
     const contract_address: `0x${string}` = "0x6d3563a4e42516a0669F013386dEc54cb16Cd63c"
 
+    // BSC TESTNET ADDRESS = 0x6d3563a4e42516a0669F013386dEc54cb16Cd63c
+    // FANTOM TESTNET ADDRESS = 0xa738f7CEd966382E30B4a54af1438e25e30C7BD4
+
     const {data: signer, isLoading} = useSigner()
     const contract = useContract({
         address: contract_address,
@@ -48,9 +51,10 @@ export default function HomePage() {
             alert("Signer is undefined")
             return false
         }
-        if (name?.length == 0 && symbol.length == 0)
+        if (name?.length == 0 && symbol.length == 0) {
             alert("Please provide name and symbol")
             return false
+        }
 
         return true;
     }
